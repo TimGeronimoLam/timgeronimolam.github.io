@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import type { Frontmatter } from "../content.config";
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = {
+    frontmatter: Frontmatter;
+};
+
+const { frontmatter } = Astro.props;
+
+const allPosts = (await getCollection("blog")).sort((a, b) => {
+    return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+});
+
+const nextPost = allPosts.findLast((post) => {
+    return new Date(post.data.pubDate).getTime() > new Date(frontmatter.pubDate).getTime();
+});
+const prevPost = allPosts.find((post) => {
+    return new Date(post.data.pubDate).getTime() < new Date(frontmatter.pubDate).getTime();
+});
+
+const hasMorePosts = nextPost || prevPost;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+    <article>
+        <header>
+            <h1>{frontmatter.title}</h1>
+            <span class="pub-date">{frontmatter.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </header>
+
+        <slot />
+
+        {hasMorePosts && (
+            <hr />
+
+            <h3>More posts</h3>
+            <div class="more-posts">
+                {nextPost && (
+                    <a href={nextPost.id}>
+                        ← {nextPost.data.title}
+                    </a>
+                )}
+                {prevPost && (
+                    <a href={prevPost.id}>
+                        {prevPost.data.title} →
+                    </a>
+                )}
+            </div>
+        )}
+    </article>
+
+</BaseLayout>
+
+<style>
+    .pub-date {
+        display: block;
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    header {
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    hr {
+        margin: 5rem 0;
+        border: none;
+        border-top: 1px solid rgba(166, 166, 166, 0.75)
+    }
+
+    article {
+        margin-bottom: 5rem;
+    }
+
+    h3 {
+        margin: 0 0 1.5rem 0;
+    }
+
+    .more-posts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        font-size: 0.9em;
+        color: #555;
+    }
+</style>
