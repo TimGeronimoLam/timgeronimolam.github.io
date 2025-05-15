@@ -1,0 +1,42 @@
+---
+---
+<header>
+    <a href="/"><span role="presentation" class="terminal">&gt;</span> tim's dev blog<span class="cursor" role="presentation">_</span></a>
+</header>
+
+<style>
+    header {
+        font-size: 1.5rem;
+        padding: 2rem 0;
+        font-family: "IBM Plex Mono", monospace;
+        letter-spacing: -0.5px;
+    }
+
+    header .terminal{
+        color: var(--color-primary);
+    }
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .cursor {
+        display: none;
+    }
+
+    header a:hover .cursor {
+        display: inline;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 49%, 100% {
+            opacity: 1;
+        }
+        50%, 99% {
+            opacity: 0;
+        }
+    }
+</style>
