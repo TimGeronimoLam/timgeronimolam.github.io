@@ -9,6 +9,8 @@ type Props = {
 
 const { frontmatter } = Astro.props;
 
+const pageTitle = `${frontmatter.title} | tim's dev blog`;
+
 const allPosts = (await getCollection("blog")).sort((a, b) => {
     return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
@@ -23,7 +25,7 @@ const prevPost = allPosts.find((post) => {
 const hasMorePosts = nextPost || prevPost;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={pageTitle}>
     <article>
         <header>
             <h1>{frontmatter.title}</h1>
