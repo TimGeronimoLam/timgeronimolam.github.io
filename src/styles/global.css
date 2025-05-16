@@ -17,6 +17,7 @@ body {
 #main-container {
     max-width: 70ch;
     margin: 0 auto;
+    padding-inline: 1rem;
 }
 
 h1 {
