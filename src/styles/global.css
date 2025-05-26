@@ -11,8 +11,7 @@ body {
     line-height: 1.5;
     font-size: 21px;
     line-height: 1.6;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Crimson Pro Variable", Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
@@ -51,10 +50,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    font-family: "Noto Sans Variable", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
-    font-weight: 700;
+    font-weight: 900;
     margin: 0 0 0.5rem;
     color: rgb(var(--black));
     line-height: 1.2;
@@ -62,6 +61,7 @@ h6 {
 
 p {
     margin-bottom: 2em;
+    margin-top: 0.5em;
 }
 
 ul,
@@ -78,15 +78,25 @@ img {
     font-family: "IBM Plex Mono", monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    scrollbar-color: var(--color-gray-200) transparent;
+    scrollbar-color: var(--color-primary-bg) transparent;
     margin-bottom: 2rem;
+}
+
+html[data-theme="dark"] .astro-code {
+    scrollbar-color: var(--dark-color-primary-darker) transparent;
+}
+
+html[data-theme="dark"] .astro-code,
+html[data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
 }
 
 code:not(.astro-code code) {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.95em;
+    font-size: 0.9em;
     background-color: var(--color-primary-bg);
-    padding: 0.2em 0.4em;
+    padding: 0.15em 0.35em;
     border-radius: 0.5rem;
     font-weight: normal;
     color: #1f2530;
@@ -108,7 +118,7 @@ table {
 }
 
 table th {
-    font-weight: 700;
+    font-weight: 600;
     text-align: left;
     padding: 0.5em 1em;
     border: 1px solid var(--color-primary-darker);
@@ -139,7 +149,6 @@ table tbody tr:last-child td:first-child {
 a {
     color: var(--color-primary);
     text-decoration: underline;
-    /* text-decoration-color: var(--color-primary); */
     font-weight: 600;
     text-underline-offset: 0.15em;
     transition: text-underline-offset 0.2s ease-in-out;
@@ -212,8 +221,4 @@ html[data-theme="dark"] a:focus-visible {
 html[data-theme="dark"] mark {
     background-color: var(--dark-color-primary-bg);
     color: var(--dark-primary-text);
-}
-
-html[data-theme="dark"] .astro-code {
-    scrollbar-color: var(--color-gray-700) transparent; /* Darker scrollbar for dark theme */
 }
