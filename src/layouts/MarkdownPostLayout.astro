@@ -23,21 +23,22 @@ const pageTitle = `${frontmatter.title}`;
             <slot />
         </div>
 
-    <Divider />
+        <Divider />
 
-    <p>
-        You can share your thoughts on this post via <a href=`mailto:hi@timsblog.dev?subject=Comment on "${frontmatter.title}"`>e-mail</a>.
-    </p>
+        <p>
+            You can share your thoughts on this post via <a href=`mailto:hi@timsblog.dev?subject=Comment on "${frontmatter.title}"`>e-mail</a>.
+        </p>
 
-    <a href="#" class="top-link" id="top-link">
-        <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
-        </svg> back to top
-    </a>
+        <button class="top-link" id="top-link" aria-label="Scroll back to top" onclick="scrollToTop()">
+            <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+            </svg> back to top
+        </button>
     </article>
 
     <script is:inline>
         const topLink = document.getElementById('top-link');
+        topLink.style.display = 'inline-block';
         function handleScroll() {
             const scrolled = window.scrollY;
             const trigger = window.innerHeight;
@@ -47,6 +48,14 @@ const pageTitle = `${frontmatter.title}`;
                 topLink.classList.remove('fixed');
             }
         }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+            });
+
+            document.querySelector("a").focus();
+        }
         window.addEventListener('scroll', handleScroll);
     </script>
 
@@ -54,11 +63,11 @@ const pageTitle = `${frontmatter.title}`;
     .pub-date {
         display: block;
         font-size: 0.9em;
-        color: var(--secondary-text);
+        color: var(--tertiary-text);
     }
 
     html[data-theme="dark"] .pub-date {
-        color: var(--dark-secondary-text);
+        color: var(--dark-tertiary-text);
     }
 
     header {
@@ -66,7 +75,28 @@ const pageTitle = `${frontmatter.title}`;
     }
 
     .top-link {
+        display: none;
         text-decoration: none;
+        color: var(--color-primary);
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-family: "Noto Sans Variable", sans-serif;
+    }
+
+    .top-link:hover,
+    .top-link:focus-visible {
+        color: var(--color-primary-darker);
+    }
+
+    html[data-theme="dark"] .top-link {
+        color: var(--dark-color-primary);
+    }
+
+    html[data-theme="dark"] .top-link:hover,
+    html[data-theme="dark"] .top-link:focus-visible {
+        color: var(--dark-color-primary-lighter);
     }
 
     .top-link svg {

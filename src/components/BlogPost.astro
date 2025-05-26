@@ -3,7 +3,7 @@ const { title, url, pubDate, description } = Astro.props;
 ---
 
 <li>
-    <h3><a href={url}>{title}</a></h3>
+    <h2><a href={url}>{title}</a></h2>
     <time datetime={pubDate.toISOString().slice(0, 10)} class="date">{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
     <p>{description}</p>
 </li>

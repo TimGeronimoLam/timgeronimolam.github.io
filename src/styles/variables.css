@@ -7,7 +7,7 @@
 
     --color-background: #F9F9F9;
     --primary-text: oklch(0.33 0 0);
-    --secondary-text: oklch(0.52 0 0);
+    --secondary-text: oklch(0.5 0 0);
     --tertiary-text: oklch(0.6665 0 0);
 
     --gray-background: oklch(0.95 0.05 0);
@@ -15,13 +15,13 @@
     /* Dark Theme Variables */
     --dark-color-primary: oklch(0.71 0.2 9.04);
     --dark-color-primary-lighter: oklch(0.85 0.2 9.04);
-    --dark-color-primary-darker: oklch(0.61 0.2 9.04);
-    --dark-color-primary-bg: oklch(0.30 0.05 9.04);
+    --dark-color-primary-darker: oklch(0.55 0.15 9.04);
+    --dark-color-primary-bg: oklch(0.35 0.06 9.04);
 
-    --dark-color-background: oklch(0.05 0.2 9.04);
+    --dark-color-background: oklch(0.2711 0.011 285.64);
     --dark-primary-text: oklch(0.90 0 0);
-    --dark-secondary-text: oklch(0.73 0 0);
-    --dark-tertiary-text: oklch(0.5795 0 0);
+    --dark-secondary-text: oklch(0.77 0 0);
+    --dark-tertiary-text: oklch(0.66 0 0);
 
     --dark-gray-background: oklch(0.10 0.2 9.04);
 }
