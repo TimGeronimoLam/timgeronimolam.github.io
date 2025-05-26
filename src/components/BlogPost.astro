@@ -3,8 +3,8 @@ const { title, url, pubDate, description } = Astro.props;
 ---
 
 <li>
-    <a href={url}><h3>{title}</h3></a>
-    <span class="date">{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+    <h3><a href={url}>{title}</a></h3>
+    <time datetime={pubDate.toISOString().slice(0, 10)} class="date">{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
     <p>{description}</p>
 </li>
 
@@ -14,19 +14,42 @@ const { title, url, pubDate, description } = Astro.props;
         margin-bottom: 3rem;
     }
     a {
-        color: #333;
+        color: var(--primary-text);
         font-weight: bold;
+        text-decoration: none;
     }
 
-    a:hover {
+    a:hover, a:focus-visible {
         color: var(--color-primary);
+        text-decoration: underline;
+    }
+
+    p {
+        color: var(--secondary-text);
+        margin: 0.5rem 0 0;
+    }
+
+    html[data-theme="dark"] p {
+        color: var(--dark-secondary-text);
+    }
+
+    html[data-theme="dark"] a {
+        color: var(--dark-primary-text);
+    }
+
+    html[data-theme="dark"] a:hover, html[data-theme="dark"] a:focus-visible {
+        color: var(--dark-color-primary-lighter);
     }
 
     .date {
         display: block;
-        color: #555;
+        color: var(--tertiary-text);
         font-size: 0.9em;
         margin-bottom: 0.5rem;
+    }
+
+    html[data-theme="dark"] .date {
+        color: var(--dark-tertiary-text);
     }
 
 </style>
