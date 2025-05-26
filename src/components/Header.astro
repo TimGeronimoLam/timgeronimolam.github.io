@@ -1,7 +1,12 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 <header>
-    <a href="/"><span role="presentation" class="terminal">&gt;</span> tim's dev blog<span class="cursor" role="presentation">_</span></a>
+    <a href="/" aria-label="Go to homepage">
+        <span role="presentation" class="terminal">&gt;</span> tim's dev blog<span class="cursor" role="presentation">_</span>
+    </a>
+
+    <ThemeToggle />
 </header>
 
 <style>
@@ -10,16 +15,28 @@
         padding: 2rem 0;
         font-family: "IBM Plex Mono", monospace;
         letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     header .terminal{
         color: var(--color-primary);
     }
 
+    html[data-theme="dark"] header .terminal {
+        color: var(--dark-color-primary);
+    }
+
     a {
         display: inline-block;
         text-decoration: none;
-        color: inherit;
+        color: var(--primary-text);
+        font-weight: normal;
+    }
+
+    html[data-theme="dark"] a {
+        color: var(--dark-primary-text);
     }
 
     .cursor {

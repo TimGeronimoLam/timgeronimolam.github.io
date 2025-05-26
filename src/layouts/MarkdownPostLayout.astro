@@ -1,7 +1,7 @@
 ---
-import { getCollection } from "astro:content";
 import type { Frontmatter } from "../content.config";
 import BaseLayout from "./BaseLayout.astro";
+import Divider from "../components/Divider.astro";
 
 type Props = {
     frontmatter: Frontmatter;
@@ -9,86 +9,80 @@ type Props = {
 
 const { frontmatter } = Astro.props;
 
-const pageTitle = `${frontmatter.title} | tim's dev blog`;
-
-const allPosts = (await getCollection("blog")).sort((a, b) => {
-    return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
-});
-
-const nextPost = allPosts.findLast((post) => {
-    return new Date(post.data.pubDate).getTime() > new Date(frontmatter.pubDate).getTime();
-});
-const prevPost = allPosts.find((post) => {
-    return new Date(post.data.pubDate).getTime() < new Date(frontmatter.pubDate).getTime();
-});
-
-const hasMorePosts = nextPost || prevPost;
+const pageTitle = `${frontmatter.title}`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <article>
         <header>
             <h1>{frontmatter.title}</h1>
-            <span class="pub-date">{frontmatter.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <time datetime={frontmatter.pubDate.toISOString().slice(0, 10)} class="pub-date">{frontmatter.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         </header>
 
-        <slot />
+        <div>
+            <slot />
+        </div>
 
-        {hasMorePosts && (
-            <hr />
+    <Divider />
 
-            <h3>More posts</h3>
-            <div class="more-posts">
-                {nextPost && (
-                    <a href={nextPost.id}>
-                        ← {nextPost.data.title}
-                    </a>
-                )}
-                {prevPost && (
-                    <a href={prevPost.id}>
-                        {prevPost.data.title} →
-                    </a>
-                )}
-            </div>
-        )}
+    <p>
+        You can share your thoughts on this post via <a href=`mailto:hi@timsblog.dev?subject=Comment on "${frontmatter.title}"`>e-mail</a>.
+    </p>
+
+    <a href="#" class="top-link" id="top-link">
+        <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+            <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+        </svg> back to top
+    </a>
     </article>
 
-</BaseLayout>
+    <script is:inline>
+        const topLink = document.getElementById('top-link');
+        function handleScroll() {
+            const scrolled = window.scrollY;
+            const trigger = window.innerHeight;
+            if (scrolled > trigger) {
+                topLink.classList.add('fixed');
+            } else {
+                topLink.classList.remove('fixed');
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+    </script>
 
 <style>
     .pub-date {
         display: block;
         font-size: 0.9em;
-        color: #555;
+        color: var(--secondary-text);
+    }
+
+    html[data-theme="dark"] .pub-date {
+        color: var(--dark-secondary-text);
     }
 
     header {
         margin-bottom: 2rem;
     }
 
-    h1 {
-        margin-bottom: 1rem;
+    .top-link {
+        text-decoration: none;
     }
 
-    hr {
-        margin: 5rem 0;
-        border: none;
-        border-top: 1px solid rgba(166, 166, 166, 0.75)
+    .top-link svg {
+        display: inline;
+        margin-right: 0.2em;
     }
 
-    article {
-        margin-bottom: 5rem;
-    }
-
-    h3 {
-        margin: 0 0 1.5rem 0;
-    }
-
-    .more-posts {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        font-size: 0.9em;
-        color: #555;
+    @media (min-width: 150ch) {
+        .top-link.fixed {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-60ch);
+            bottom: 2.8rem;
+            font-size: 1rem;
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 1;
+        }
     }
 </style>

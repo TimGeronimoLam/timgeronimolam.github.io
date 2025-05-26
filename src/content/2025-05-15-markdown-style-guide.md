@@ -6,8 +6,9 @@ image:
     url: https://docs.astro.build/assets/arc.webp
     alt: The Astro logo on a dark background with a purple gradient arc.
 pubDate: 2025-05-15
+slug: markdown-style-guide
 ---
-Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
+Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro and here is [a link](https://example.com).
 
 ## Headings
 
