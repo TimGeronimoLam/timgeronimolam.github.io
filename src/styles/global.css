@@ -102,13 +102,13 @@ code:not(.astro-code code) {
     padding: 0.15em 0.35em;
     border-radius: 0.5rem;
     font-weight: normal;
-    color: var(--dark-primary-text);
+    color: oklch(0.95 0 0);
     white-space: nowrap;
 }
 
 html[data-theme="dark"] code:not(.astro-code code) {
     background-color: #0d1117;
-    color: var(--dark-primary-text);
+    color: var(--primary-text);
 }
 
 blockquote {
@@ -154,7 +154,7 @@ table tbody tr:last-child td:first-child {
     border-bottom-left-radius: 0.5rem;
 }
 
-a {
+a, .link {
     color: var(--color-primary);
     text-decoration: underline;
     font-weight: 600;
@@ -162,13 +162,24 @@ a {
     transition: text-underline-offset 0.2s ease-in-out;
 }
 
-a:hover {
+.link {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+a:hover, .link:hover {
     color: var(--color-primary-darker);
     text-underline-offset: 0.2em;
     text-decoration-color: var(--color-primary-darker);
 }
 
-a:focus-visible {
+html[data-theme="dark"] a:hover, html[data-theme="dark"] .link:hover {
+    color: var(--color-primary-lighter);
+    text-decoration-color: var(--color-primary-lighter);
+}
+
+a:focus-visible, .link:focus-visible {
     outline: 2px solid var(--color-primary-darker);
     text-decoration: none;
     outline-offset: 2px;
@@ -177,51 +188,10 @@ a:focus-visible {
 
 mark {
     background-color: var(--color-primary-bg);
-}
-
-/* Updated Dark Theme Styles */
-html[data-theme="dark"] body {
-    background-color: var(--dark-color-background);
-    color: var(--dark-primary-text);
-}
-
-html[data-theme="dark"] h1,
-html[data-theme="dark"] h2,
-html[data-theme="dark"] h3,
-html[data-theme="dark"] h4,
-html[data-theme="dark"] h5,
-html[data-theme="dark"] h6 {
-    color: var(--dark-primary-text);
-}
-
-html[data-theme="dark"] blockquote {
-    border-left: 4px solid var(--dark-color-primary);
-}
-
-html[data-theme="dark"] table th {
-    border: 1px solid var(--dark-color-primary-darker);
-    background-color: var(--dark-color-primary-bg);
-}
-
-html[data-theme="dark"] table td {
-    border: 1px solid var(--dark-color-primary-darker);
-}
-
-html[data-theme="dark"] a {
-    color: var(--dark-color-primary);
-    text-decoration-color: var(--dark-color-primary-darker);
-}
-
-html[data-theme="dark"] a:hover {
-    color: var(--dark-color-primary-lighter);
-    text-decoration-color: var(--dark-color-primary-lighter);
-}
-
-html[data-theme="dark"] a:focus-visible {
-    outline: 2px solid var(--dark-color-primary-darker);
+    color: var(--primary-text);
+    padding-inline: 0.25rem;
 }
 
 html[data-theme="dark"] mark {
-    background-color: var(--dark-color-primary-bg);
-    color: var(--dark-primary-text);
+    background-color: var(--color-primary-darker);
 }

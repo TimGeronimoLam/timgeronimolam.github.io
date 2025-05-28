@@ -29,7 +29,7 @@ const pageTitle = `${frontmatter.title}`;
             You can share your thoughts on this post via <a href=`mailto:hi@timsblog.dev?subject=Comment on "${frontmatter.title}"`>e-mail</a>.
         </p>
 
-        <button class="top-link" id="top-link" aria-label="Scroll back to top" onclick="scrollToTop()">
+        <button class="top-link link" id="top-link" aria-label="Scroll back to top" onclick="scrollToTop()">
             <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
                 <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
             </svg> back to top
@@ -66,10 +66,6 @@ const pageTitle = `${frontmatter.title}`;
         color: var(--secondary-text);
     }
 
-    html[data-theme="dark"] .pub-date {
-        color: var(--dark-secondary-text);
-    }
-
     header {
         margin-bottom: 2rem;
     }
@@ -78,25 +74,7 @@ const pageTitle = `${frontmatter.title}`;
         display: none;
         text-decoration: none;
         color: var(--color-primary);
-        border: none;
-        background: none;
-        cursor: pointer;
-        font-weight: 600;
         font-family: "Noto Sans Variable", sans-serif;
-    }
-
-    .top-link:hover,
-    .top-link:focus-visible {
-        color: var(--color-primary-darker);
-    }
-
-    html[data-theme="dark"] .top-link {
-        color: var(--dark-color-primary);
-    }
-
-    html[data-theme="dark"] .top-link:hover,
-    html[data-theme="dark"] .top-link:focus-visible {
-        color: var(--dark-color-primary-lighter);
     }
 
     .top-link svg {
