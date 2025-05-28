@@ -21,10 +21,6 @@
             50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
     }
 
-    html[data-theme="dark"] .wavy-line {
-        background: var(--dark-secondary-text); /* Use a dark theme color for the wavy line */
-    }
-
     @media (forced-colors: active) {
         .wavy-line {
             mask: none; /* Remove the SVG mask to ensure a solid line */

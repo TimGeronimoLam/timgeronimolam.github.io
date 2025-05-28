@@ -28,23 +28,10 @@ const { title, url, pubDate, description } = Astro.props;
         margin: 0.5rem 0 0;
     }
 
-    html[data-theme="dark"] a {
-        color: var(--dark-primary-text);
-    }
-
-    html[data-theme="dark"] a:hover, html[data-theme="dark"] a:focus-visible {
-        color: var(--dark-color-primary-lighter);
-    }
-
     .date {
         display: block;
         color: var(--secondary-text);
         font-size: 0.9em;
         margin-bottom: 0.5rem;
     }
-
-    html[data-theme="dark"] .date {
-        color: var(--dark-secondary-text);
-    }
-
 </style>
