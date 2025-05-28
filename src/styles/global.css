@@ -74,8 +74,11 @@ img {
     border-radius: 0.5rem;
 }
 
-.astro-code {
+code {
     font-family: "IBM Plex Mono", monospace;
+}
+
+.astro-code {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     scrollbar-color: var(--color-primary-bg) transparent;
@@ -95,12 +98,17 @@ html[data-theme="dark"] .astro-code span {
 code:not(.astro-code code) {
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.9em;
-    background-color: var(--color-primary-bg);
+    background-color: #24292e;
     padding: 0.15em 0.35em;
     border-radius: 0.5rem;
     font-weight: normal;
-    color: #1f2530;
+    color: var(--dark-primary-text);
     white-space: nowrap;
+}
+
+html[data-theme="dark"] code:not(.astro-code code) {
+    background-color: #0d1117;
+    color: var(--dark-primary-text);
 }
 
 blockquote {
@@ -183,11 +191,6 @@ html[data-theme="dark"] h3,
 html[data-theme="dark"] h4,
 html[data-theme="dark"] h5,
 html[data-theme="dark"] h6 {
-    color: var(--dark-primary-text);
-}
-
-html[data-theme="dark"] code:not(.astro-code code) {
-    background-color: var(--dark-color-primary-bg);
     color: var(--dark-primary-text);
 }
 
