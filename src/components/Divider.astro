@@ -9,7 +9,7 @@
         --b: 1px; /* thickness of the line */
         --m: 0.7; /* curvature of the wave [0 2] */
 
-        background: var(--tertiary-text);
+        background: var(--secondary-text);
         --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
         height: calc(2*var(--R));
         width: 100%;
@@ -22,7 +22,7 @@
     }
 
     html[data-theme="dark"] .wavy-line {
-        background: var(--dark-tertiary-text); /* Use a dark theme color for the wavy line */
+        background: var(--dark-secondary-text); /* Use a dark theme color for the wavy line */
     }
 
     @media (forced-colors: active) {
