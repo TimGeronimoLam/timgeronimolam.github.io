@@ -15,8 +15,8 @@ const { title, url, pubDate, description } = Astro.props;
     }
     a {
         color: var(--primary-text);
-        font-weight: bold;
         text-decoration: none;
+        font-weight: unset;
     }
 
     a:hover, a:focus-visible {
@@ -25,12 +25,7 @@ const { title, url, pubDate, description } = Astro.props;
     }
 
     p {
-        color: var(--secondary-text);
         margin: 0.5rem 0 0;
-    }
-
-    html[data-theme="dark"] p {
-        color: var(--dark-secondary-text);
     }
 
     html[data-theme="dark"] a {
@@ -43,13 +38,13 @@ const { title, url, pubDate, description } = Astro.props;
 
     .date {
         display: block;
-        color: var(--tertiary-text);
+        color: var(--secondary-text);
         font-size: 0.9em;
         margin-bottom: 0.5rem;
     }
 
     html[data-theme="dark"] .date {
-        color: var(--dark-tertiary-text);
+        color: var(--dark-secondary-text);
     }
 
 </style>

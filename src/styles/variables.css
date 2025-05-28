@@ -8,7 +8,6 @@
     --color-background: #F9F9F9;
     --primary-text: oklch(0.33 0 0);
     --secondary-text: oklch(0.5 0 0);
-    --tertiary-text: oklch(0.6665 0 0);
 
     --gray-background: oklch(0.95 0.05 0);
 
@@ -21,7 +20,6 @@
     --dark-color-background: oklch(0.2711 0.011 285.64);
     --dark-primary-text: oklch(0.90 0 0);
     --dark-secondary-text: oklch(0.77 0 0);
-    --dark-tertiary-text: oklch(0.66 0 0);
 
     --dark-gray-background: oklch(0.10 0.2 9.04);
 }
