@@ -6,16 +6,18 @@ const blogSchema = z.object({
   pubDate: z.date(),
   description: z.string(),
   author: z.string(),
-  image: z.object({
-    url: z.string(),
-    alt: z.string()
-  }),
+  image: z.optional(
+    z.object({
+      url: z.string(),
+      alt: z.string(),
+    })
+  ),
   slug: z.string(),
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content" }),
-  schema: blogSchema
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content" }),
+  schema: blogSchema,
 });
 
 export type Frontmatter = z.infer<typeof blogSchema>;
