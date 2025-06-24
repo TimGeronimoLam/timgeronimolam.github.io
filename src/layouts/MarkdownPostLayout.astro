@@ -13,15 +13,14 @@ const pageTitle = `${frontmatter.title}`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <article>
-        <header>
+    <article class="content-container">
+        <header class="wide">
             <h1>{frontmatter.title}</h1>
             <time datetime={frontmatter.pubDate.toISOString().slice(0, 10)} class="pub-date">{frontmatter.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            <p class="description">{frontmatter.description}</p>
         </header>
 
-        <div>
-            <slot />
-        </div>
+        <slot />
 
         <Divider />
 
@@ -29,16 +28,15 @@ const pageTitle = `${frontmatter.title}`;
             You can share your thoughts on this post via <a href=`mailto:hi@timsblog.dev?subject=Comment on "${frontmatter.title}"`>e-mail</a>.
         </p>
 
-        <button class="top-link link" id="top-link" aria-label="Scroll back to top" onclick="scrollToTop()">
+        <a href="#site-header" class="top-link" id="top-link" aria-label="Scroll back to top">
             <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
                 <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
             </svg> back to top
-        </button>
+        </a>
     </article>
 
     <script is:inline>
         const topLink = document.getElementById('top-link');
-        topLink.style.display = 'inline-block';
         function handleScroll() {
             const scrolled = window.scrollY;
             const trigger = window.innerHeight;
@@ -47,14 +45,6 @@ const pageTitle = `${frontmatter.title}`;
             } else {
                 topLink.classList.remove('fixed');
             }
-        }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-            });
-
-            document.querySelector("a").focus();
         }
         window.addEventListener('scroll', handleScroll);
     </script>
@@ -67,13 +57,19 @@ const pageTitle = `${frontmatter.title}`;
     }
 
     header {
-        margin-bottom: 2rem;
+        padding: 2.5rem 0;
+    }
+
+    header .description {
+        margin-top: 2.5rem;
+        color: var(--secondary-text);
+        font-size: 1.15em;
     }
 
     .top-link {
-        display: none;
+        /* display: none; */
         text-decoration: none;
-        font-family: "Noto Sans Variable", sans-serif;
+        font-size: 1rem;
     }
 
     .top-link svg {
@@ -81,15 +77,12 @@ const pageTitle = `${frontmatter.title}`;
         margin-right: 0.2em;
     }
 
-    @media (min-width: 150ch) {
+    @media (min-width: 170ch) {
         .top-link.fixed {
             position: fixed;
             left: 50%;
-            transform: translateX(-60ch);
-            bottom: 2.8rem;
-            font-size: 1rem;
-            transition: opacity 0.3s, visibility 0.3s;
-            opacity: 1;
+            transform: translateX(-70ch);
+            bottom: 3rem;
         }
     }
 </style>

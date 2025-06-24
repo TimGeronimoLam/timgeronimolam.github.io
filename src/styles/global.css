@@ -8,15 +8,53 @@ body {
     height: 100%;
     background-color: var(--color-background);
     color: var(--primary-text);
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.6;
-    font-family: "Crimson Pro Variable", Georgia, 'Times New Roman', Times, serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
     margin: 0 auto;
-    padding-inline: 1rem;
-    max-width: 70ch;
+}
+
+@media (min-width: 52rem) {
+    .content-container {
+        display: grid;
+        grid-template-columns: clamp(1rem, 2rem, 5vw)
+            [fullbleed-start] minmax(auto, 1fr)
+            [wide-start] minmax(auto, 1fr)
+            [peek-start] minmax(auto, 8rem)
+            [main-start] min(100%, 60ch)
+            [main-end] minmax(auto, 8rem)
+            [peek-end] minmax(auto, 1fr)
+            [wide-end] minmax(auto, 1fr)
+            [fullbleed-end] clamp(1rem, 2rem, 5vw);
+        }
+}
+
+.content-container {
+    width: 90vw;
+    margin-inline: auto;
+}
+
+.content-container * {
+    grid-column: main;
+}
+
+.fullbleed {
+    grid-column: fullbleed-start / fullbleed-end;
+}
+
+.wide {
+    grid-column: wide-start / wide-end;
+}
+
+.peek {
+    grid-column: peek-start / peek-end;
+}
+
+article .astro-code {
+    grid-column: peek-start / peek-end;
 }
 
 h1 {
@@ -49,28 +87,43 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Noto Sans Variable", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
-    font-weight: 900;
-    margin: 0 0 0.5rem;
+    font-family: "Fraunces Variable", serif;
+    font-weight: 400;
     color: rgb(var(--black));
     line-height: 1.2;
 }
 
 p {
-    margin-bottom: 2em;
-    margin-top: 0.5em;
+    margin: 0 0 1.5rem;
 }
 
 ul,
 ol {
-    margin-bottom: 2rem;
-    padding-left: 2rem;
+    padding: 0 1.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+ul {
+    list-style-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzIxXzcpIj4KPHBhdGggZD0iTTUuNyAxOC4wMkwxMi44IDE0VjEzLjg0TDUuNyA5LjgyVjguMTJMMTQuMyAxMy4xVjE0LjdMNS43IDE5LjY4VjE4LjAyWiIgZmlsbD0iI0MyMDA1MSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzIxXzciPgo8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==")
+}
+
+[data-theme="dark"] ul {
+    list-style-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzIwXzMpIj4KPHBhdGggZD0iTTUuNyAxOC4wMkwxMi44IDE0VjEzLjg0TDUuNyA5LjgyVjguMTJMMTQuMyAxMy4xVjE0LjdMNS43IDE5LjY4VjE4LjAyWiIgZmlsbD0iI0ZGNjE4OCIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzIwXzMiPgo8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==");
+}
+
+ol {
+    list-style-type: decimal-leading-zero;
+    padding-left: 3rem;
+}
+
+ol li::marker {
+    color: var(--color-primary);
+    font-family: "IBM Plex Mono", monospace;
 }
 
 img {
     border-radius: 0.5rem;
+    grid-column: peek-start / peek-end;
 }
 
 code {
@@ -80,7 +133,7 @@ code {
 .astro-code {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    scrollbar-color: var(--color-primary-bg) transparent;
+    scrollbar-color: #E6EDF3 transparent;
     margin-bottom: 2rem;
 }
 
@@ -101,18 +154,15 @@ code:not(.astro-code code) {
     white-space: nowrap;
 }
 
-html[data-theme="dark"] code:not(.astro-code code) {
-    background-color: var(--code-background);
-    color: var(--primary-text);
-}
-
 blockquote {
-    padding: 0 0 0 1em;
-    margin: 0;
+    margin: 2rem 0;
+    padding-left: 1.5rem;
     font-style: italic;
     border-left: 4px solid var(--color-primary);
     font-size: 1.5em;
+    font-weight: 300;
     line-height: 1.35;
+    font-family: "Fraunces Variable";
 }
 
 table {
@@ -155,7 +205,7 @@ a, .link {
     text-decoration: underline;
     font-weight: 600;
     text-underline-offset: 0.15em;
-    transition: text-underline-offset 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
 }
 
 .link {
@@ -166,8 +216,6 @@ a, .link {
 
 a:hover, .link:hover {
     color: var(--color-primary-lighter);
-    text-underline-offset: 0.2em;
-    text-decoration-color: var(--color-primary-lighter);
 }
 
 a:focus-visible, .link:focus-visible {
@@ -184,4 +232,8 @@ mark {
     padding-inline: 0.25rem;
 }
 
-
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}

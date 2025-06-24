@@ -5,9 +5,9 @@
     --color-primary-darker: hsl(335, 89%, 28%);
     --color-primary-bg: hsl(337, 85%, 95%);
 
-    --primary-text: hsl(0, 0%, 21%);
+    --primary-text: hsl(0, 0%, 10%);
     --secondary-text: hsl(0, 0%, 39%);
-    
+
     --color-background: hsl(0, 0%, 98%);
     --code-background: hsl(216, 28%, 7%);
     --bright-background: hsl(0, 0%, 0%);
@@ -21,7 +21,7 @@ html[data-theme="dark"] {
     --color-primary-bg: hsl(345, 20%, 24%);
 
     --primary-text: hsl(0, 0%, 87%);
-    --secondary-text: hsl(0, 0%, 57%);
+    --secondary-text: hsl(0, 0%, 65%);
 
     --color-background: hsl(228, 7%, 14%);
     --code-background: hsl(216, 28%, 7%);

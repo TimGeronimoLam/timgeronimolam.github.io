@@ -9,17 +9,20 @@ const allPosts = (await getCollection("blog")).sort((a, b) => {
 ---
 
 <BaseLayout pageTitle="404 | tim's dev blog">
-	<h1>404 - Not Found</h1>
-	<p>Sorry, the page you are looking for does not exist.</p>
+	<div class="content-container">
 
-	<blockquote>
-		<p>
-			I am not in here. I am not out there either. I may be found in your way of breathing and walking.<br />
-			— Thích Nhất Hạnh
-		</p>
-	</blockquote>
+		<h1>404 - Not Found</h1>
+		<p>Sorry, the page you are looking for does not exist.</p>
 
-	<a href="/">Go back to the homepage</a>
+		<blockquote>
+			<p>
+				I am not in here. I am not out there either. I may be found in your way of breathing and walking.<br />
+				— Thích Nhất Hạnh
+			</p>
+		</blockquote>
+
+		<a href="/">Go back to the homepage</a>
+	</div>
 </BaseLayout>
 
 <style>
