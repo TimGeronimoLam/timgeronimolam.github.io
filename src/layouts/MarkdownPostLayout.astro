@@ -23,7 +23,6 @@ const imageUrl = `url(${frontmatter.image?.url})`
 
         <slot />
 
-        
         <footer class="wide">
             <Divider />
             <p>
@@ -31,9 +30,7 @@ const imageUrl = `url(${frontmatter.image?.url})`
             </p>
 
             <a href="#site-header" class="top-link" id="top-link" aria-label="Scroll back to top">
-                <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-                    <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
-                </svg> back to top
+                <span class="top-arrow">&gt;</span> back to top
             </a>
         </footer>
     </article>
@@ -80,23 +77,18 @@ const imageUrl = `url(${frontmatter.image?.url})`
     }
 
     .top-link {
-        /* display: none; */
         text-decoration: none;
         font-size: 1rem;
+        font-family: var(--font-family-code);
     }
 
-    .top-link svg {
-        display: inline;
+    .top-arrow {
+        display: inline-block;
         margin-right: 0.2em;
     }
 
     @media (min-width: 170ch) {
         .top-link.fixed {
-            /* position: fixed;
-            left: 50%;
-            transform: translateX(-70ch);
-            bottom: 1.5rem; */
-            /* grid-column: wide; */
             position: fixed;
             bottom: 1.5rem;
         }
