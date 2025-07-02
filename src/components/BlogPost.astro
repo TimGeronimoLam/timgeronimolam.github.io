@@ -20,13 +20,22 @@ const { title, url, pubDate, description, slug } = Astro.props;
         font-weight: unset;
     }
 
-    a:hover, a:focus-visible {
+    a:focus-visible {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    a:hover{
         color: var(--color-primary);
         text-decoration: underline;
     }
 
+    h2 {
+        margin-bottom: 1rem;
+    }
+
     p {
-        margin: 0.5rem 0 0;
+        margin: 1rem 0 0;
     }
 
     .date {
