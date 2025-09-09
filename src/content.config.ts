@@ -4,8 +4,8 @@ import { z, defineCollection } from "astro:content";
 const blogSchema = z.object({
   title: z.string(),
   pubDate: z.date(),
-  description: z.string(),
   author: z.string(),
+  description: z.optional(z.string()),
   image: z.optional(
     z.object({
       url: z.string(),

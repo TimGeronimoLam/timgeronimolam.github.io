@@ -10,7 +10,7 @@ type Props = {
 const { frontmatter } = Astro.props;
 
 const pageTitle = `${frontmatter.title}`;
-const imageUrl = `url(${frontmatter.image?.url})`
+const imageUrl = `url(${frontmatter.image?.url})`;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -18,7 +18,7 @@ const imageUrl = `url(${frontmatter.image?.url})`
         <header class="wide">
             <h1>{frontmatter.title}</h1>
             <time datetime={frontmatter.pubDate.toISOString().slice(0, 10)} class="pub-date">{frontmatter.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            <p class="description">{frontmatter.description}</p>
+            {frontmatter.description && <p class="description">{frontmatter.description}</p>}
         </header>
 
         <slot />

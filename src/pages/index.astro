@@ -6,11 +6,25 @@ import BlogPost from "../components/BlogPost.astro";
 const allPosts = (await getCollection("blog")).sort((a, b) => {
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
+
+function getFirstParagraph(markdown: string | undefined) : string | undefined {
+	if (!markdown) return undefined;
+	const match = markdown.match(/(?:^|\n)([^#\n][^\n]*)/);
+	return match ? match[1].trim() : undefined;
+}
 ---
 
 <BaseLayout pageTitle="tim's dev blog">
 		<ul class="content-container">
-			{allPosts.map((post) => <BlogPost url={`/${post.id}`} title={post.data.title} pubDate={post.data.pubDate} description={post.data.description} slug={post.data.slug} />)}
+			{allPosts.map((post) => (
+				<BlogPost
+					url={`/${post.id}`}
+					title={post.data.title}
+					pubDate={post.data.pubDate}
+					description={post.data.description ?? getFirstParagraph(post.body)}
+					slug={post.data.slug}
+				/>
+			))}
 		</ul>
 </BaseLayout>
 
