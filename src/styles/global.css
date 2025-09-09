@@ -302,6 +302,12 @@ mark {
     padding-inline: 0.25rem;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid rgba(from var(--secondary-text) r g b / 0.7);
+    margin: 3rem 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;
