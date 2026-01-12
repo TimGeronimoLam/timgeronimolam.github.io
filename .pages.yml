@@ -6,6 +6,9 @@ content:
     filename: "{slug}.md"
     view:
       fields: [title, pubDate, author]
+      sort: [pubDate, title]
+      default:
+        order: desc
     fields:
       - name: title
         label: Title
