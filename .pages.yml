@@ -8,6 +8,7 @@ content:
       fields: [title, pubDate, author]
       sort: [pubDate, title]
       default:
+        sort: pubDate
         order: desc
     fields:
       - name: title
